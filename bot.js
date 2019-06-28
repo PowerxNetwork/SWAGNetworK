@@ -78,7 +78,7 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-    if(message.content.startsWith(prefix + '!new')) {
+    if(message.content.startsWith(prefix + 'new')) {
         let args = message.content.split(' ').slice(1).join(' ');
         let support = message.guild.roles.find("name","Support Team");
         let ticketsStation = message.guild.channels.find("name", "TICKETS.");
