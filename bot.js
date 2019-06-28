@@ -78,4 +78,29 @@ client.on('message', message => {
 });
 
 
+client.on('message', message => {
+    if (message.content.startsWith(prefix + "!invs")) {
+     if(!message.channel.guild) return;
+if (message.author.bot) return;
+        message.channel.createInvite({
+        thing: true,
+        maxUses: 2,
+        maxAge: 86400
+    }).then(invite =>
+      message.author.sendMessage(invite.url)
+    )
+    const Embed11 = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setDescription("تم ارسالك في الخاص")
+   .setFooter("اسم سيررك ",'رابط صوره سيرفرك')
+                   .setTimestamp()
+				message.channel.send('**تم الارسال في الخاص**');
+
+
+      message.channel.sendEmbed(Embed11).then(message => {message.delete(3000)})
+      message.author.sendEmbed(Embed11)
+    }
+});
+
+
 client.login(process.env.BOT_TOKEN);
