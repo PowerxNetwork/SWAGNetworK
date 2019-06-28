@@ -295,20 +295,5 @@ client.on('message', function(message) {
     }
 });
 
-});
-
-
-client.on('message',  message => {
-	if (massage.content.startWith(prefix + "say"))
-		var args = massage.content.split(" ").slice(1);
-	message.delate();
-		
-	massage.chaneel.send("args");
-          
-
-
-
-});
-
 
 client.login(process.env.BOT_TOKEN);
