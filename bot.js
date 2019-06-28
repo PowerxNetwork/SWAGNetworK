@@ -45,4 +45,33 @@ client.on('message', function(msg) {
   });
 
 
+client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "a!support") {
+
+
+ message.author.sendMessage(`
+
+╱╭╮╭╮╱╱╱╱╭╮╭━╮╱╱╱╱╱╱╭━━╮╱╱╱╭╮
+╭╯╰┫┃╱╱╱╱┃┃┃╭╯╱╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮
+╰╮╭┫╰━┳━━┫╰╯╯╭┳━╮╭━━┫╰╯╰┳━┻╮╭╯
+╱┃┃┃╭╮┃┃━┫╭╮┃┣┫╭╮┫╭╮┃╭━╮┃╭╮┃┃
+╱┃╰┫┃┃┃┃━┫┃┃╰┫┃┃┃┃╰╯┃╰━╯┃╰╯┃╰╮
+╱╰━┻╯╰┻━━┻╯╰━┻┻╯╰┻━╮┣━━━┻━━┻━╯
+╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╭━╯┃
+╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╰━━╯
+ 
+بامكانك دعوة البوت من هنا
+
+https://discordapp.com/api/oauth2/authorize?client_id=594251859955548160&permissions=8&scope=bot
+
+Server Support : https://discord.gg/PmcTusA
+`);
+
+message.channel.send('**تم الارسال في الخاص**');
+
+    }
+});
+
+
 client.login(process.env.BOT_TOKEN);
