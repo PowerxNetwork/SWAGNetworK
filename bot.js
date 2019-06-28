@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 const client = new Discord.Client();
 
-var prefix = "$";
+var prefix = "a!";
 
 client.on('ready', () => {
 
@@ -18,7 +18,7 @@ client.on('ready', () => {
 
   console.log(`Logged in as ${client.user.tag}!`);
 
-client.user.setGame(`$help | $invite`,"http://twitch.tv/S-F")
+client.user.setGame(`a! , Akon`,"http://twitch.tv/S-F")
 
 client.user.setStatus("dnd")
 
