@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 const client = new Discord.Client();
 
-var prefix = "$";
+var prefix = "a!";
 
 client.on('ready', () => {
 
@@ -18,7 +18,7 @@ client.on('ready', () => {
 
   console.log(`Logged in as ${client.user.tag}!`);
 
-client.user.setGame(`! , Akon`,"http://twitch.tv/S-F")
+client.user.setGame(`a! , Akon`,"http://twitch.tv/S-F")
 
 client.user.setStatus("dnd")
 
@@ -26,7 +26,7 @@ client.user.setStatus("dnd")
 
 
 client.on('message', function(msg) {
-    if(msg.content.startsWith (prefix  + '$server')) {
+    if(msg.content.startsWith (prefix  + 'a!server')) {
       let embed = new Discord.RichEmbed()
       .setColor('RANDOM')
       .setThumbnail(msg.guild.iconURL)
