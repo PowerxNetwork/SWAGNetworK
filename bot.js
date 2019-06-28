@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 const client = new Discord.Client();
 
-var prefix = "!";
+var prefix = "&";
 
 client.on('ready', () => {
 
@@ -27,7 +27,7 @@ client.user.setStatus("dnd")
 
 client.on('message', message => {
     var prefix = "*"
-    if (message.content === prefix + "date") {
+    if (message.content === prefix + "&d") {
         var currentTime = new Date(),
             السنة = currentTime.getFullYear(),
             الشهر = currentTime.getMonth() + 1,
