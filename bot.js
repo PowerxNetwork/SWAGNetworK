@@ -78,7 +78,7 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-    if(message.content.startsWith(prefix + 'new')) {
+    if(message.content.startsWith(prefix + '!new')) {
         let args = message.content.split(' ').slice(1).join(' ');
         let support = message.guild.roles.find("name","Support Team");
         let ticketsStation = message.guild.channels.find("name", "TICKETS.");
@@ -119,7 +119,7 @@ client.on('message', message => {
                                 ticket.sendEmbed(embed);
                 }) .catch();
     }
-    if(message.content.startsWith(prefix + 'close')) {
+    if(message.content.startsWith(prefix + '!close')) {
             if(!message.member.hasPermission("ADMINISTRATOR")) return;
         if(!message.channel.name.startsWith("ticket")) {
             return;
@@ -130,7 +130,7 @@ client.on('message', message => {
                     message.channel.sendEmbed(embed) .then(codes => {
  
                    
-                        const filter = msg => msg.content.startsWith(prefix + 'close');
+                        const filter = msg => msg.content.startsWith(prefix + '!close');
                         message.channel.awaitMessages(response => response.content === prefix + 'close', {
                             max: 1,
                             time: 20000,
