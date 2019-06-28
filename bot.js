@@ -281,7 +281,7 @@ message.channel.sendEmbed(embed);
 
 
 client.on('message', function(message) {
-    if(message.content.startsWith(prefix + '!akno')) {
+    if(message.content.startsWith(prefix + 'akno')) {
         let args = message.content.split(" ").slice(1);
         if (!args[0]) {
             message.channel.send('https://discordapp.com/api/oauth2/authorize?client_id=594251859955548160&permissions=8&scope=bot');
