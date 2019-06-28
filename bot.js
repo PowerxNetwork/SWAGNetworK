@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 const client = new Discord.Client();
 
-var prefix = "&";
+var prefix = "!";
 
 client.on('ready', () => {
 
@@ -18,7 +18,7 @@ client.on('ready', () => {
 
   console.log(`Logged in as ${client.user.tag}!`);
 
-client.user.setGame(`a! , Akon`,"http://twitch.tv/S-F")
+client.user.setGame(`! , Akon`,"http://twitch.tv/S-F")
 
 client.user.setStatus("dnd")
 
@@ -26,13 +26,17 @@ client.user.setStatus("dnd")
 
 
 client.on('message', message => {
-    var prefix = "*"
-    if (message.content === prefix + "&d") {
-        var currentTime = new Date(),
-            السنة = currentTime.getFullYear(),
-            الشهر = currentTime.getMonth() + 1,
-            اليوم = currentTime.getDate();
-        message.channel.sendMessage( "التاريخ : " + اليوم + "-" + الشهر + "-" +السنة)
+   if (message.content === "!id") {
+   let embed = new Discord.RichEmbed()
+  .setColor("RANDOM")
+  .setThumbnail(message.author.avatarURL)
+  .addField("Name:",`${message.author.username}`, true)
+  .addField('Discrim:',"#" +  message.author.discriminator, true)
+  .addField("ID:", message.author.id, true)
+  .addField("Create At:", message.author.createdAt, true)
+     
+     
+  message.channel.sendEmbed(embed);
     }
 });
 
