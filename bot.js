@@ -78,93 +78,24 @@ client.on('message', message => {
 });
 
 
-client.on('message', message => {
-    if (message.author.bot) return;
-     if (message.content === prefix + "!help") {
-		 message.channel.send('**تم ارسالك في الخاص**');
-            
-	
-		 
-
-
- message.author.sendMessage(`
- **
-__~~The King Bot~~__ By: Peery#0609
-╱╭╮╭╮╱╱╱╱╭╮╭━╮╱╱╱╱╱╱╭━━╮╱╱╱╭╮
-╭╯╰┫┃╱╱╱╱┃┃┃╭╯╱╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮
-╰╮╭┫╰━┳━━┫╰╯╯╭┳━╮╭━━┫╰╯╰┳━┻╮╭╯
-╱┃┃┃╭╮┃┃━┫╭╮┃┣┫╭╮┫╭╮┃╭━╮┃╭╮┃┃
-╱┃╰┫┃┃┃┃━┫┃┃╰┫┃┃┃┃╰╯┃╰━╯┃╰╯┃╰╮
-╱╰━┻╯╰┻━━┻╯╰━┻┻╯╰┻━╮┣━━━┻━━┻━
- ❖  *kick <mention > ➾ لطرد عضو
- 
- ❖ *mute < mention > ➾ اسكات عضو 
-
- ❖ *clear  ➾ لتنضيف المحادثة (fixing)
-
- ❖ *cv <name> ➾ صنع روم صوتية
-
- ❖ *ct <name> ➾ صنع روم كتابية
-
- ❖ *unmute <mention> ➾ فك الاسكات من العضو
-  
- ❖ *bc <message> ➾ لارسال رسالة لجميع اعضاء السيرفر
-
-
-╔[❖════════════❖]╗
-                    اوامر عامة
-╚[❖════════════❖]╝
-
-❖ *roll <number> ➾ قرعة
-
-❖ *member ➾ معلومات الاعضاء
-
-❖ *avatar ➾ شعار حسابك
-
-❖ *ser-av ➾ شعار السيرفر
-
-❖ *uptime ➾ مدة التشغيل
-
-❖ *id ➾ اي دي
-
-❖ *date ➾ التاريخ
-
-❖ *invs ➾ رابط دخول سيرفرك
-
-❖ *own ➾ مسؤول البوت
-
-❖ *help-ar ➾ المساعدة في العربي
-
-❖ *help-en ➾ المساعدة في الانجليزيلة
-
-❖ *ping ➾ عرض سرعه اتصال البوت
-
-❖ *bot ➾ معلومات البوت
-
-❖ *server ➾ معلومات السيرفر
-
-❖ *invite ➾ رابط دعوة البوت
-
-╔[❖════════════❖]╗
-                      الترحيب
-╚[❖════════════❖]╝
-
-لتفعيل خاصية الترحيب قم بعمل قناة اسمها "wlc"
-
-==================================================================
-
-Server support: https://discord.gg/twdHNJT
-
-bot invite link: https://discordapp.com/oauth2/authorize?client_id=388700863893602304&scope=bot&permissions=0
-
-==================================================================
-
-
-`);
-
+client.on('message', function(msg) {
+    if(msg.content.startsWith (prefix  + '!server')) {
+      let embed = new Discord.RichEmbed()
+      .setColor('RANDOM')
+      .setThumbnail(msg.guild.iconURL)
+      .setTitle(`Showing Details Of  **${msg.guild.name}*`)
+      .addField(':globe_with_meridians:** نوع السيرفر**',`[** __${msg.guild.region}__ **]`,true)
+      .addField(':medal:** __الرتب__**',`[** __${msg.guild.roles.size}__ **]`,true)
+      .addField(':red_circle:**__ عدد الاعضاء__**',`[** __${msg.guild.memberCount}__ **]`,true)
+      .addField(':large_blue_circle:**__ عدد الاعضاء الاونلاين__**',`[** __${msg.guild.members.filter(m=>m.presence.status == 'online').size}__ **]`,true)
+      .addField(':pencil:**__ الرومات الكتابية__**',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
+      .addField(':microphone:**__ رومات الصوت__**',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
+      .addField(':crown:**__ الأونـر__**',`**${msg.guild.owner}**`,true)
+      .addField(':id:**__ ايدي السيرفر__**',`**${msg.guild.id}**`,true)
+      .addField(':date:**__ تم عمل السيرفر في__**',msg.guild.createdAt.toLocaleString())
+      msg.channel.send({embed:embed});
     }
-});
-
+  });
 
 
 client.login(process.env.BOT_TOKEN);
