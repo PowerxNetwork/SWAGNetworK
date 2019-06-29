@@ -368,35 +368,18 @@ if(message.content.startsWith(prefix + "sug")) {
 const args = message.content.slice(prefix.length).trim().split(/ +/g);
 
   var suggestMessage = args.slice(1).join(" ")
-  if(!suggestMessage) return message.reply("الرجاء وضع اقتراح")
+  if(!suggestMessage) return message.reply("Please place a suggestion")
   let suggestsEMBED = new Discord.RichEmbed()
    .setColor('#0028db')
-   .setTitle(" !أقتراح جديد ")
+   .setTitle(" New Suggestion")
    .setDescription(`**${suggestMessage}**`)
-   .setFooter(` المقترح : ${message.author.tag}`)
+   .setFooter(` Proposed : ${message.author.tag}`)
   
-       let suggests = message.guild.channels.find(ch => ch.name === "الاقتراحات");
-                   if (!suggests) return message.reply("يرجى صنع روم بأسم : الاقتراحات")
+       let suggests = message.guild.channels.find(ch => ch.name === "sugg");
+                   if (!suggests) return message.reply("Please put rom by name : sugg")
                suggests.send(suggestsEMBED);
 }
 })
-
-
-client.on('message', message => {//mrx - dev
-    var prefix = '!';
-    if (message.content.startsWith(prefix + 'accept')) {
-        if (message.author.bot) return;
-        if (!message.guild) return;
-        let Room = message.guild.channels.find(`name`, 'akon');//هنا ضع إسم الروم
-        let user = message.mentions.users.first();
-        let embedreject = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .setAuthor(user.username,user.avatarURL)
-        .setTitle('» `تم قبولك كإداري` :white_check_mark:  ')
-        .setThumbnail(message.author.avatarURL)
-        Room.sendEmbed(embedreject);
-    }
-});
 
 
 client.on("message",async msg => {
