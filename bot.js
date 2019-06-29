@@ -423,28 +423,6 @@ client.on('message', function(message) {
     });
 
 
-client.on("message", message => { // تعريف المسج
-  if(message.content.startsWith(`!{prefix}rainbow`)){ // اذا الرسالة انكتبت برفكس رينبو
-if(!message.member.roles.find("name","❆ VIP") && !message.member.roles.find("name", "everyone")) return message.reply("ليس لديك صلاحية لتشغيل هذا الامر, يجب ان يكون لديك رتبة VIP ``#vip``"); // لو م لقا معاه رتبة في اي بي يرد عليه ويقله ..
-let role = message.guild.roles.find(r => r.name === "Rainbow"); // لو لقاها معاه يدور على رتبة اسمها Rainbow
-if(message.member.roles.array().includes(role)) {
-message.member.removeRole(role); // هنا يحذف الرتبة لو معاه ياها
-message.reply("تم أزاله الرينبو"); // Says Rainbow Has Been Removed.
-} else { 
-message.member.addRole(role); // هنا يضيف له الرتبة لو م لقاها
-message.reply("تم أضافه الرينبو"); // Says Rainbow Has Been Added
-} // تقفيله
-}}) // تقفيله الكود
-
-client.on("ready", () => { // هنا لو بدأ البوت 
-    setInterval(function(){ 
-        client.guilds.get("594172595965001763").roles.find("name", "Rainbow").edit({ // هنا  يلاقي بلأيدي الي انت حطيته رتبة اسمها رينبو يبدا يعدل على لونها الى
-            color : "RANDOM" // راندوم 
-        }); // تقفيله
-    }, 60000) // كل ٦ ثواني يغير الون
-});  // تقفيله الكود
-
-
 client.on('message', message => {
     if (message.content === "!croles") {
     if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
