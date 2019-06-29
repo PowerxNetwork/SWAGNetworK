@@ -400,44 +400,27 @@ client.on('message', async message => {
 })
 
 
-client.on('message', async message => {//alpha codes & @!                    D5aaN , off#٥٥٩٩
-                    if (message.content.startsWith(prefix + '!role')) {//alpha codes & @!                    D5aaN , off#٥٥٩٩
-                        let args = message.content.split(' ').slice(1);//alpha codes & @!                    D5aaN , off#٥٥٩٩
-                        if (!args) return message.reply('Type Name Role') //alpha codes & @!                    D5aaN , off#٥٥٩٩
-                        if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
-                        await message.channel.sendMessage(`➕ | To Create Role
-:x: | To Cancel the process`).then(e => {//alpha codes & @!                    D5aaN , off#٥٥٩٩
-                            e.react("➕")//alpha codes & @!                    D5aaN , off#٥٥٩٩
-                            .then(()=> e.react("➕"))//alpha codes & @!                    D5aaN , off#٥٥٩٩
-                            .then(()=> e.react("❌")).then(() => c.delete(12000))//alpha codes & @!                    D5aaN , off#٥٥٩٩
-                            let reaction1Filter = (reaction, user) => reaction.emoji.name === '➕' && user.id === message.author.id;//alpha codes & @!                    D5aaN , off#٥٥٩٩
-                            let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;//alpha codes & @!                    D5aaN , off#٥٥٩٩
-                            let reaction1 = e.createReactionCollector(reaction1Filter, { time: 12000 });//alpha codes & @!                    D5aaN , off#٥٥٩٩
-                            let reaction2 =e.createReactionCollector(reaction2Filter, { time: 12000 });//alpha codes & @!                    D5aaN , off#٥٥٩٩
-                            reaction1.on("collect", c => {//alpha codes & @!                    D5aaN , off#٥٥٩٩
-                  message.guild.createRole({
-                    name : args.join(' '),
-                    permissions : [1]
-      
-                })
-                  e.edit(`Role Created ! :heavy_check_mark:`).then(g => {
-                    g.delete(5000)
-                    message.delete()
-                                    })
-                                }
-                  
-                                    )//alpha codes & @!                    D5aaN , off#٥٥٩٩
-                                    reaction2.on("collect", c => {//alpha codes & @!                    D5aaN , off#٥٥٩٩
-                                      e.edit('**Successfully Canceled :x:**').then(c => {
-                                        c.delete(5000)
-                                        message.delete()
-                                        
-                        })
-                      })
-                    }
-                        )}
-                        
-                });
+client.on("message", message => { // تعريف المسج
+  if(message.content.startsWith(`${prefix}rainbow`)){ // اذا الرسالة انكتبت برفكس رينبو
+if(!message.member.roles.find("name","❆ VIP") && !message.member.roles.find("name", "everyone")) return message.reply("ليس لديك صلاحية لتشغيل هذا الامر, يجب ان يكون لديك رتبة VIP ``#vip``"); // لو م لقا معاه رتبة في اي بي يرد عليه ويقله ..
+let role = message.guild.roles.find(r => r.name === "Rainbow"); // لو لقاها معاه يدور على رتبة اسمها Rainbow
+if(message.member.roles.array().includes(role)) {
+message.member.removeRole(role); // هنا يحذف الرتبة لو معاه ياها
+message.reply("تم أزاله الرينبو"); // Says Rainbow Has Been Removed.
+} else { 
+message.member.addRole(role); // هنا يضيف له الرتبة لو م لقاها
+message.reply("تم أضافه الرينبو"); // Says Rainbow Has Been Added
+} // تقفيله
+}}) // تقفيله الكود
+
+
+client.on("ready", () => { // هنا لو بدأ البوت 
+    setInterval(function(){ 
+        client.guilds.get("ايدي سيرفرك").roles.find("name", "Rainbow").edit({ // هنا  يلاقي بلأيدي الي انت حطيته رتبة اسمها رينبو يبدا يعدل على لونها الى
+            color : "RANDOM" // راندوم 
+        }); // تقفيله
+    }, 60000) // كل ٦ ثواني يغير الون
+});  // تقفيله الكود
 
 
 client.login(process.env.BOT_TOKEN);
