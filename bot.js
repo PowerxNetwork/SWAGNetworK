@@ -316,29 +316,6 @@ client.on('message', function(msg) {
   });
 
 
-client.on("message", message => { // تعريف المسج
-  if(message.content.startsWith(`!{prefix}rainbow`)){ // اذا الرسالة انكتبت برفكس رينبو
-if(!message.member.roles.find("name","❆ VIP") && !message.member.roles.find("name", "everyone")) return message.reply("ليس لديك صلاحية لتشغيل هذا الامر, يجب ان يكون لديك رتبة VIP ``#vip``"); // لو م لقا معاه رتبة في اي بي يرد عليه ويقله ..
-let role = message.guild.roles.find(r => r.name === "Rainbow"); // لو لقاها معاه يدور على رتبة اسمها Rainbow
-if(message.member.roles.array().includes(role)) {
-message.member.removeRole(role); // هنا يحذف الرتبة لو معاه ياها
-message.reply("تم أزاله الرينبو"); // Says Rainbow Has Been Removed.
-} else { 
-message.member.addRole(role); // هنا يضيف له الرتبة لو م لقاها
-message.reply("تم أضافه الرينبو"); // Says Rainbow Has Been Added
-} // تقفيله
-}}) // تقفيله الكود
-
-
-client.on("ready", () => { // هنا لو بدأ البوت 
-    setInterval(function(){ 
-        client.guilds.get("ايدي سيرفرك").roles.find("name", "Rainbow").edit({ // هنا  يلاقي بلأيدي الي انت حطيته رتبة اسمها رينبو يبدا يعدل على لونها الى
-            color : "RANDOM" // راندوم 
-        }); // تقفيله
-    }, 60000) // كل ٦ ثواني يغير الون
-});  // تقفيله الكود
-
-
 client.on('message', async msg =>{
     var prefix = '!';//هنا البريفيكس
     if (msg.author.bot) return undefined;
@@ -380,39 +357,6 @@ const args = message.content.slice(prefix.length).trim().split(/ +/g);
                suggests.send(suggestsEMBED);
 }
 })
-
-
-client.on("message",async msg => {
-    if(msg.content.startsWith(prefix + "!clear")){
-      let args = msg.content.split(" ").slice(1).join(" ");
-      if(!args)  return msg.reply(`**${msg.content} <Number Messages Deleted?>**`)
-      msg.reply("**Are You Sure Of The Deleted Messages?**").then(o => {
-        o.react("✅")
-        .then(()=> o.react('❎'))
-        .then(()=> o.react("✅"))
-        let reaction1 = (reaction,user) => reaction.emoji.name === "✅" && user.id === msg.author.id
-        let reaction2 = (reaction,user) => reaction.emoji.name === "❎" && user.id === msg.author.id
-        let react3 = o.createReactionCollector(reaction1, { time: 12300})
-        let react4 = o.createReactionCollector(reaction2, { time: 12300})
-        react3.on("collect", r => {
-         msg.channel.bulkDelete(args)
-          msg.reply(`**Done Deleted Messages ${args}**`).then(op => {
-          op.delete(1200)
-         o.delete(1200)
-         msg.delete(1200)
-       })
-       react4.on("collect", r => {
-        msg.reply(`**Done Deleted Messages Has Been Cancel**`).then(ob => {
-          ob.delete(1200)
-          o.delete(1200)
-          msg.delete(1200)
-        })
-        })
-      })
-    })
-    
-    }
-  });
 
 
 client.login(process.env.BOT_TOKEN);
