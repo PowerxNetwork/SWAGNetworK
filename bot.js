@@ -401,7 +401,7 @@ client.on('message', async message => {
 
 
 client.on('message', async message => {//alpha codes & @!                    D5aaN , off#٥٥٩٩
-                    if (message.content.startsWith(prefix + 'add.r')) {//alpha codes & @!                    D5aaN , off#٥٥٩٩
+                    if (message.content.startsWith(prefix + '!role')) {//alpha codes & @!                    D5aaN , off#٥٥٩٩
                         let args = message.content.split(' ').slice(1);//alpha codes & @!                    D5aaN , off#٥٥٩٩
                         if (!args) return message.reply('Type Name Role') //alpha codes & @!                    D5aaN , off#٥٥٩٩
                         if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
