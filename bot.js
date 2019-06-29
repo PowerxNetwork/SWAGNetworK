@@ -397,7 +397,7 @@ setInterval(() => {
 
 client.on('message', function(message) {
     if(!message.channel.guild) return;
-    if(message.content === 'cc') {
+    if(message.content === '!color') {
     if(message.member.hasPermission('MANAGE_ROLES')) {
     setInterval(function(){})
     message.channel.send('يتم انشاء 50 لون انتضر | ▶️')
@@ -408,7 +408,7 @@ client.on('message', function(message) {
     });
     
     client.on('message', message=>{
-    if (message.content === 'cc'){
+    if (message.content === '!color'){
     if(!message.channel.guild) return;
     if (message.member.hasPermission('MANAGE_ROLES')){
     setInterval(function(){})
