@@ -267,15 +267,15 @@ client.on('message',async message => {
 
 
 client.on('message', message => {
-     if (message.content === "bot") {
-            if(!message.channel.guild) return message.reply('** This command only for servers **');
+            if (message.content.startsWith("$botinfo")) {
      let embed = new Discord.RichEmbed()
-  .setColor('RANDOM')
-  .addField("**عدد السيرفرات الي فيها البوت:**" , client.guilds.size)
-  .addField("**المستخدمين:**", client.users.size)
-  .addField("**قنوات:**", client.channels.size)
-  .setTimestamp()
-message.channel.sendEmbed(embed);
+.addField(' عدد السيرفرات التي بها',`[${client.guilds.size}]  `)
+.addField(' عدد الاعضاء ',` [${client.users.size}] `)
+.addField('الغرف ',`[${client.channels.size}]`) 
+.addField(' البنق ',`[${Date.now() - message.createdTimestamp}]`) 
+.addField(' Devolope By fox ')
+.setColor('#7d2dbe')
+  message.channel.sendEmbed(embed);
     }
 });
 
@@ -405,6 +405,28 @@ setInterval(() => {
 });
 }
 });
+
+
+const prefix = '#';
+
+client.on('message', function(msg) {
+
+    if(msg.content.startsWith (prefix + 'server')) {
+      if(!msg.channel.guild) return msg.reply('**❌ اسف لكن هذا الامر للسيرفرات فقط **');
+      let embed = new Discord.RichEmbed()
+      .setColor('#000000')
+      .setThumbnail(msg.guild.iconURL)
+      .setTitle(`${msg.guild.name}`,true)
+      .addField(':id: **Server ID:**',`${msg.guild.id}`,true)
+      .addField('📅** Created On**',msg.guild.createdAt.toLocaleString())
+      .addField('👑** Owned By**',`${msg.guild.owner}`,true)
+      .addField(':busts_in_silhouette:  **Members **' + `[ ${msg.guild.memberCount} ]`,`**${msg.guild.members.filter(m=>m.presence.status == 'online').size}**` + ' Online')
+      .addField(':speech_balloon: Channels ' + `[ ${msg.guild.channels.size} ]`,`**${msg.guild.channels.filter(m => m.type === 'text').size}**` + ' Text | ' + `**${msg.guild.channels.filter(m => m.type === 'voice').size}**` + ' Voice')//tt
+      .addField(':earth_africa: Others','**Region: **' + `${msg.guild.region}` + ' **Verification Level:** ' + `${msg.guild.verificationLevel}`)
+      .addField(':closed_lock_with_key:** Rules **' + `[ ${msg.guild.roles.size} ]`,'To see a list with all roles use **#roles**');
+      msg.channel.send({embed:embed});
+    }
+  });
 
 
 client.login(process.env.BOT_TOKEN);
