@@ -298,7 +298,7 @@ client.on('message', function(message) {
 
 client.on('message', function(msg) {
 
-    if(msg.content.startsWith (prefix + 'server')) {
+    if(msg.content.startsWith (prefix + '!server')) {
       if(!msg.channel.guild) return msg.reply('**❌ اسف لكن هذا الامر للسيرفرات فقط **');
       let embed = new Discord.RichEmbed()
       .setColor('#000000')
@@ -340,7 +340,7 @@ client.on("ready", () => { // هنا لو بدأ البوت
 
 
 client.on('message', message => {
-    if (message.content === ('!ping')) {
+    if (message.content === ('ping')) {
       if (message.author.bot) return;
       if (!message.channel.guild) return;
     message.channel.send({
