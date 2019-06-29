@@ -468,9 +468,9 @@ message.channel.sendMessage('**Wait a bit until the row is finished! **')
 
 
 client.on("message", message => {
-                      if(message.content === 'رابط' ) {
-						  message.channel.send('**شيك الخاص يحلو 😉**').then(msg => {
-							  msg.edit('وش فيك منتظر رح شوف الكود فالخاص')
+                      if(message.content === '!رابط' ) {
+						  message.channel.send('**تم الأرسال في الخاص .**').then(msg => {
+							  msg.edit('تم أرسال الرابط بالخاص عزيزي.')
 						  
 						  });
                         message.channel.createInvite({
@@ -486,9 +486,9 @@ client.on("message", message => {
 
 
 client.on("message", message => {
-                      if(message.content === 'Link' ) {
+                      if(message.content === '!link' ) {
 						  message.channel.send('**Look To private**').then(msg => {
-							  msg.edit('Goo !')
+							  msg.edit('Go to Private Now . ')
 						  
 						  });
                         message.channel.createInvite({
