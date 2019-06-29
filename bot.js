@@ -339,17 +339,26 @@ client.on("ready", () => { // هنا لو بدأ البوت
 });  // تقفيله الكود
 
 
-client.on('message', message => {
-    if (message.content === ('!ping')) {
-      if (message.author.bot) return;
-      if (!message.channel.guild) return;
-    message.channel.send({
-        embed: new Discord.RichEmbed()
-      .setColor('RANDOM')
-     .addField('pong!',`${Date.now() - message.createdTimestamp}`)
-    })
-}
-});
+client.on('message', async msg =>{
+    var prefix = '!';//هنا البريفيكس
+    if (msg.author.bot) return undefined;
+    if (!msg.content.startsWith(prefix)) return undefined;
+   
+    let args = msg.content.split(' ');
+ 
+    let command = msg.content.toLowerCase().split(" ")[0];
+    command = command.slice(prefix.length)
+ 
+    if(command === `ping`) {//هنا الكوماند
+    let embed = new Discord.RichEmbed()
+    .setColor('RANDOM')
+    .setTitle("Your Ping!!")
+    .setDescription(`${client.ping} ms`)
+    .setFooter(`${msg.author.tag}`);
+    msg.delete().catch(O_o=>{})
+    msg.channel.send(embed);
+    }
+});//Alpha Codes_LioNDz
 
 
 client.on('message', message => {let prefix = "!";
