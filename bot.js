@@ -296,24 +296,23 @@ client.on('message', function(message) {
 });
 
 
-client.on('message', function(msg) {
+client.on('message',async message => {
+  if(message.content.startsWith(prefix + "server")) {
+    let embed = new Discord.RichEmbed()
+    .setAuthor(message.author.username, message.author.avatarURL)
+    .setTitle(``${message.guild.name}``)
+    .setThumbnail(message.guild.iconURL)
+    .addField('• iD:', `- ${message.guild.id}`,true)
+    .addField('• Owner:', `- ${message.guild.owner}`, true)
+    .addField('• Channels:', ``#` ${message.guild.channels.filter(a => a.type === 'text').size} - `🎤` ${message.guild.channels.filter(a => a.type === 'voice').size}`, true)
+    .addField('• Members:', ``Count` ${message.guild.memberCount} - `Last` ${Array.from(message.channel.guild.members.values()).sort((a, b) => b.joinedAt - a.joinedAt).map(m => `${m}`).splice(0, 1)}`, true)
+    .addField('• AFK Channel:', `${message.guild.afkChannel || 'None'}`, true)
+    .addField('• Other:', ``Roles` ${message.guild.roles.size} - `Emojis` ${message.guild.emojis.size} `[` ${message.guild.emojis.map(m => m).join(' **|** ')} `]``,true)
+    .addField('• Region:', `${message.guild.region}`, true);
 
-    if(msg.content.startsWith (prefix + 'server')) {
-      if(!msg.channel.guild) return msg.reply('**❌ اسف لكن هذا الامر للسيرفرات فقط **');
-      let embed = new Discord.RichEmbed()
-      .setColor('#000000')
-      .setThumbnail(msg.guild.iconURL)
-      .setTitle(`${msg.guild.name}`,true)
-      .addField(':id: **Server ID:**',`${msg.guild.id}`,true)
-      .addField('📅** Created On**',msg.guild.createdAt.toLocaleString())
-      .addField('👑** Owned By**',`${msg.guild.owner}`,true)
-      .addField(':busts_in_silhouette:  **Members **' + `[ ${msg.guild.memberCount} ]`,`**${msg.guild.members.filter(m=>m.presence.status == 'online').size}**` + ' Online')
-      .addField(':speech_balloon: Channels ' + `[ ${msg.guild.channels.size} ]`,`**${msg.guild.channels.filter(m => m.type === 'text').size}**` + ' Text | ' + `**${msg.guild.channels.filter(m => m.type === 'voice').size}**` + ' Voice')//tt
-      .addField(':earth_africa: Others','**Region: **' + `${msg.guild.region}` + ' **Verification Level:** ' + `${msg.guild.verificationLevel}`)
-      .addField(':closed_lock_with_key:** Rules **' + `[ ${msg.guild.roles.size} ]`,'To see a list with all roles use **#roles**');
-      msg.channel.send({embed:embed});
-    }
-  });
+    message.channel.send(embed);
+  }
+});
 
 
 client.on('message', async msg =>{
