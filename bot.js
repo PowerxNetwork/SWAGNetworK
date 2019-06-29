@@ -395,8 +395,6 @@ setInterval(() => {
 });
 
 
-const prefix = '!';
-
 client.on('message', function(msg) {
 
     if(msg.content.startsWith (prefix + '!server')) {
