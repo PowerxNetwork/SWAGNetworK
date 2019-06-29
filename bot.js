@@ -373,4 +373,21 @@ const args = message.content.slice(prefix.length).trim().split(/ +/g);
 })
 
 
+client.on('message', message => {//mrx - dev
+    var prefix = '§';
+    if (message.content.startsWith(prefix + 'accept')) {
+        if (message.author.bot) return;
+        if (!message.guild) return;
+        let Room = message.guild.channels.find(`name`, 'akon');//هنا ضع إسم الروم
+        let user = message.mentions.users.first();
+        let embedreject = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setAuthor(user.username,user.avatarURL)
+        .setTitle('» `تم قبولك كإداري` :white_check_mark:  ')
+        .setThumbnail(message.author.avatarURL)
+        Room.sendEmbed(embedreject);
+    }
+});
+
+
 client.login(process.env.BOT_TOKEN);
