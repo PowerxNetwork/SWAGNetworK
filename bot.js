@@ -400,4 +400,44 @@ client.on('message', async message => {
 })
 
 
+client.on('message', async message => {//alpha codes & @!                    D5aaN , off#٥٥٩٩
+                    if (message.content.startsWith(prefix + 'add.r')) {//alpha codes & @!                    D5aaN , off#٥٥٩٩
+                        let args = message.content.split(' ').slice(1);//alpha codes & @!                    D5aaN , off#٥٥٩٩
+                        if (!args) return message.reply('Type Name Role') //alpha codes & @!                    D5aaN , off#٥٥٩٩
+                        if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
+                        await message.channel.sendMessage(`➕ | To Create Role
+:x: | To Cancel the process`).then(e => {//alpha codes & @!                    D5aaN , off#٥٥٩٩
+                            e.react("➕")//alpha codes & @!                    D5aaN , off#٥٥٩٩
+                            .then(()=> e.react("➕"))//alpha codes & @!                    D5aaN , off#٥٥٩٩
+                            .then(()=> e.react("❌")).then(() => c.delete(12000))//alpha codes & @!                    D5aaN , off#٥٥٩٩
+                            let reaction1Filter = (reaction, user) => reaction.emoji.name === '➕' && user.id === message.author.id;//alpha codes & @!                    D5aaN , off#٥٥٩٩
+                            let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;//alpha codes & @!                    D5aaN , off#٥٥٩٩
+                            let reaction1 = e.createReactionCollector(reaction1Filter, { time: 12000 });//alpha codes & @!                    D5aaN , off#٥٥٩٩
+                            let reaction2 =e.createReactionCollector(reaction2Filter, { time: 12000 });//alpha codes & @!                    D5aaN , off#٥٥٩٩
+                            reaction1.on("collect", c => {//alpha codes & @!                    D5aaN , off#٥٥٩٩
+                  message.guild.createRole({
+                    name : args.join(' '),
+                    permissions : [1]
+      
+                })
+                  e.edit(`Role Created ! :heavy_check_mark:`).then(g => {
+                    g.delete(5000)
+                    message.delete()
+                                    })
+                                }
+                  
+                                    )//alpha codes & @!                    D5aaN , off#٥٥٩٩
+                                    reaction2.on("collect", c => {//alpha codes & @!                    D5aaN , off#٥٥٩٩
+                                      e.edit('**Successfully Canceled :x:**').then(c => {
+                                        c.delete(5000)
+                                        message.delete()
+                                        
+                        })
+                      })
+                    }
+                        )}
+                        
+                });
+
+
 client.login(process.env.BOT_TOKEN);
