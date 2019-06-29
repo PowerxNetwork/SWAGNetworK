@@ -357,7 +357,7 @@ client.on('message', function(message) {
 
 client.on('message', message =>{
   if(message.content.startsWith(prefix + 'stats')){
-  if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **You Dont Have Administarto**');
+  if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **You Dont Have Administartor**');
   if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return message.reply('❌ **im Not Have Administartor**');
   message.guild.createChannel(`Discord status :` , 'category')
  
