@@ -450,8 +450,8 @@ client.on('message', message => {
     if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
             if (!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(`**${message.author.username} You Dont Have** ``MANAGE_ROLES`` **Premission**`);
 
-                     message.guild.createRole({ name: "Owner", color: "#اللون", permissions: [] })
-                     message.guild.createRole({ name: "CoOwner", color: "#اللون", permissions: [] })
+                     message.guild.createRole({ name: "Owner", color: "#ff0000", permissions: [] })
+                     message.guild.createRole({ name: "Co-Owner", color: "#ff0000", permissions: [] })
                      message.guild.createRole({ name: "Leader", color: "#اللون", permissions: [] })
                      message.guild.createRole({ name: "CoLeader", color: "#اللون", permissions: [] })
                      message.guild.createRole({ name: "King", color: "#اللون", permissions: [] })
@@ -462,7 +462,7 @@ client.on('message', message => {
                      message.guild.createRole({ name: "Member", color: "#اللون", permissions: [] })
         
 
-message.channel.sendMessage('**انتظر قليلا حتى انتهي من صناعة الرتب! **')
+message.channel.sendMessage('**Wait a bit until the row is finished! **')
 }
 });
 
