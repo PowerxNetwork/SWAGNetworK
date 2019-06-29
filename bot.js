@@ -467,4 +467,40 @@ message.channel.sendMessage('**Wait a bit until the row is finished! **')
 });
 
 
+client.on("message", message => {
+                      if(message.content === 'رابط' ) {
+						  message.channel.send('**شيك الخاص يحلو 😉**').then(msg => {
+							  msg.edit('وش فيك منتظر رح شوف الكود فالخاص')
+						  
+						  });
+                        message.channel.createInvite({
+                        thing: true,
+                        maxUses: 10,
+                        maxAge: 86400
+                        }).then(invite =>
+       
+							   message.author.sendMessage(invite.url)
+							  
+                             )						 
+					}});
+
+
+client.on("message", message => {
+                      if(message.content === 'Link' ) {
+						  message.channel.send('**Look To private**').then(msg => {
+							  msg.edit('Goo !')
+						  
+						  });
+                        message.channel.createInvite({
+                        thing: true,
+                        maxUses: 10,
+                        maxAge: 86400
+                        }).then(invite =>
+       
+							   message.author.sendMessage(invite.url)
+							  
+                             )						 
+					}});
+
+
 client.login(process.env.BOT_TOKEN);
