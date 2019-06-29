@@ -83,10 +83,10 @@ client.on('message', message => {
         let support = message.guild.roles.find("name","Support Team");
         let ticketsStation = message.guild.channels.find("name", "TICKETS.");
         if(!args) {
-            return message.channel.send('**المرجو كتآبة موضوع للتذكرة**');
+            return message.channel.send('**Please enter a subject for the ticket**');
         };
                 if(!support) {
-                    return message.channel.send('** من فضلك قم بإنشاء رتبة اسمها `Support Team` **');
+                    return message.channel.send('** Please Create Role Support Team **');
                 };
             if(!ticketsStation) {
                 message.guild.createChannel("TICKETS.", "category");
@@ -125,7 +125,7 @@ client.on('message', message => {
             return;
         };  
                 let embed = new Discord.RichEmbed()
-                    .setAuthor("أعد الامر ، لديك 20 ثآنية")
+                    .setAuthor("Repeat it, you have 20 seconds")
                     .setColor("RANDOM");
                     message.channel.sendEmbed(embed) .then(codes => {
  
@@ -140,7 +140,7 @@ client.on('message', message => {
                             message.channel.delete();
                         }) .catch(() => {
                             codes.delete()
-                                .then(message.channel.send('**تم إلغاء العملية**')) .then((c) => {
+                                .then(message.channel.send('**The operation was canceled**')) .then((c) => {
                                     c.delete(4000);
                                 })
                                    
