@@ -629,4 +629,37 @@ let go2; // انشاء متغير go2
 });
 
 
+client.on('message', message => {
+			var mintionchannel = message.content.split(' ').slice(1);
+      if(message.content.startsWith(prefix + 'channel')) {
+       
+         if(!message.guild.member(message.author).hasPermission("MANAGE_CHANNELS")) {
+          message.channel.send("You Don't Have A Permissions `MANAGE_CHANNELS` ");
+        } else {
+			     var room1 = message.guild.channels.find('name', `${mintionchannel}`);
+          if(!room1) {
+           message.channel.send( "**Usage :** ```" + "  " + `${prefix}` + 'channel'+ " " + 'ChannelName```' );
+            } else {
+             
+             if (room1.type = "text"){
+              var filtertitle = "Channel Last Message : ";
+              var filtermessage =  room1.lastMessage; 
+             }if (room1.type = "voice"){
+              var filtertitle = "Channel Timestamp";
+              var filtermessage = room1.createdTimestamp;
+             }
+              let embed = new Discord.RichEmbed()
+              .addField(' Chanel Name : ', room1.name, true)
+              .addField(' Channel ID : ',room1.id, true)
+              .addField(' Channel CreateAt  : ', room1.createdAt,true)
+              .addField(`${filtertitle}`, filtermessage , true)
+              .addField(' Channel Type : ', room1.type, true)
+               message.channel.sendEmbed(embed);
+		    	}
+            
+          }
+     }
+    });
+
+
 client.login(process.env.BOT_TOKEN);
