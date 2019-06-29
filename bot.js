@@ -544,7 +544,7 @@ client.on('message', function(msg) {
 
 
 client.on("message",async message => {
-if(message.content === '!vote'){//الامر
+if(message.content === 'vote'){//الامر
 if(!message.member.roles.some(r=>["manager","vote"].includes(r.name)) ) return; // الرتب الي يمديها تستخدم الامر يمديك تخليها ب برمشن
  
     let go1; //انشاء متغير go1
