@@ -26,7 +26,7 @@ client.user.setStatus("dnd")
 
 
 client.on('message', message => {
-   if (message.content === "!aid") {
+   if (message.content === "!id") {
    let embed = new Discord.RichEmbed()
   .setColor("RANDOM")
   .setThumbnail(message.author.avatarURL)
