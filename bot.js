@@ -374,7 +374,7 @@ const args = message.content.slice(prefix.length).trim().split(/ +/g);
 
 
 client.on('message', message => {//mrx - dev
-    var prefix = '§';
+    var prefix = '!';
     if (message.content.startsWith(prefix + 'accept')) {
         if (message.author.bot) return;
         if (!message.guild) return;
