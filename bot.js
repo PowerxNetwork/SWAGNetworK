@@ -372,7 +372,7 @@ client.on('message', message =>{
   if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **لا تملك صلاحية**');
   if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return message.reply('❌ **البوت لا يمتلك صلاحية**');
   message.guild.createChannel(`Server Stats:` , 'category')
-  
+ 
     message.guild.createChannel(`"انتظر قليلا` , 'voice').then(time => {
     time.overwritePermissions(message.guild.id, {
       CONNECT: false,
@@ -407,11 +407,11 @@ setInterval(() => {
 });
 
 
-const prefix = '!';
+const prefix = '#';
 
 client.on('message', function(msg) {
 
-    if(msg.content.startsWith (prefix + 'server')) {
+    if(msg.content.startsWith (prefix + '!server')) {
       if(!msg.channel.guild) return msg.reply('**❌ اسف لكن هذا الامر للسيرفرات فقط **');
       let embed = new Discord.RichEmbed()
       .setColor('#000000')
