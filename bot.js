@@ -273,7 +273,7 @@ client.on('message', message => {
 .addField(' عدد الاعضاء ',` [${client.users.size}] `)
 .addField('الغرف ',`[${client.channels.size}]`) 
 .addField(' البنق ',`[${Date.now() - message.createdTimestamp}]`) 
-.addField(' Devolope By fox ')
+.addField(' Devolope - Tornado#6642, ')
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
