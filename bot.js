@@ -359,15 +359,19 @@ const args = message.content.slice(prefix.length).trim().split(/ +/g);
 })
 
 
-client.on('message', message => {
-    if(message.content.startsWith(prefix+'support')) {
-  const embed = new Discord.RichEmbed()
-    .setTitle("Invite Link")
-    .setDescription(`suport server **[here](https://discord.gg/PmcTusA)**`)
-    .setColor('RANDOM');
-    
-        message.author.send(embed)
-}
+client.on('message', function(message) {
+    if(message.content.startsWith(prefix + 'support')) {
+        let args = message.content.split(" ").slice(1);
+        if (!args[0]) {
+            message.channel.send('https://discord.gg/PmcTusA');
+            return;
+            }
+    message.channel.send(Math.floor(Math.random() * args.join(' ')));
+            if (!args[0]) {
+          message.edit('1')
+          return;
+        }
+    }
 });
 
 
