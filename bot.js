@@ -375,4 +375,16 @@ client.on('message', function(message) {
 });
 
 
+client.on("message", message => {
+  if (message.channel.type === "dm") { //////// Galal , Alpha Codes
+
+      message.channel.startTyping(); //////// Galal , Alpha Codes
+      setTimeout(() => { //////// Galal , Alpha Codes
+        message.channel.stopTyping(); //////// Galal , Alpha Codes
+      }, Math.random() * (1 - 3) + 1 * 1000);
+   
+  } //////// Galal , Alpha Codes
+}); //////// Galal , Alpha Codes
+
+
 client.login(process.env.BOT_TOKEN);
