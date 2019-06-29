@@ -296,108 +296,24 @@ client.on('message', function(message) {
 });
 
 
-client.on("message", message => {  //iTzMurtaja
-    if(message.content.startsWith(prefix + "emoji")) { //iTzMurtaja
-        if(message.author.bot) return; //iTzMurtaja
-        var emojiid =  message.content.split(" ").slice(1).join(" ") //iTzMurtaja
-        console.log(emojiid) //iTzMurtaja
-        if(emojiid.length < "18" || emojiid.length > "18" || isNaN(emojiid)) return  message.channel.send(`- Usage
-${prefix}emoji <EmojiID>`); //iTzMurtaja
-        else    //iTzMurtaja
-        message.channel.send("This is the emoji that you requested:-",
-          { //iTzMurtaja
-            files: [`https://cdn.discordapp.com/emojis/${emojiid}.png`]
-          }) //iTzMurtaja
-        }  //iTzMurtaja
-}) //iTzMurtaja
+client.on('message', function(msg) {
 
-
-client.on('message', async message => {
-    let prefix = "!"
-    let messageArray = message.content.split(' ')
-    let args = messageArray.slice(1)
-    let cmd = messageArray[0]
-    if (cmd === `${prefix}mute`) {
-        message.delete();
-        // هنا يمديك تحط الرولات الي يمديها تستعمل الكوماند
-        if (!message.member.roles.some(r => ['الرول رقم 2 الي يمديه يستعمل الكوماند', 'الرول الي يمديه يستعمل الكوماند'].includes(r.name))) return message.reply('You do not have permissions').then(msg => msg.delete(30000))
-        let themuteguy = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-        if (!themuteguy) return message.channel.send("**الرجاء وضع المنشن**").then(msg => msg.delete(8000))
-        if (themuteguy.id == message.author.id) return message.reply('You cannot mute yourself can you 🌚? ')
-        let roleid = message.guild.roles.find(c => c.name === "Muted")
-        if (!roleid) return message.reply(`Please use \`${prefix}setup\` first`)
-        let mutereason = args.join(" ").slice(25)
-        if (!mutereason) return message.reply(`\`Usage: ${prefix}mute mention time reason\``)
-        let time = args[1]
-        if (ms(time) > 2.592e+9) return message.reply('Must be lower or equal to 30 days') // هنا لو الوقت اكثر من 30 يوم بيقلك م يمديك تسويله ميوت وهذي الجزئية مالها داعي لكن بتساعدك لو تبي تخلي ماكس للوقت
-        if (themuteguy.roles.has(roleid.id)) return message.channel.send("This guy already is muted")
-        bot.mutes.count++ + 1
-        if (isNaN(bot.mutes.count)) bot.mutes.count = 0 + 1;
-        bot.mutes[bot.mutes.count] = {
-            time: Date.now() + ms(time),
-            muted: themuteguy.id,
-            roleid: roleid.id,
-            guildid: message.guild.id
-        }
-        await message.guild.member(themuteguy.id).addRole(roleid.id, mutereason)
-        fs.writeFile("./mutes.json", JSON.stringify(bot.mutes, null, 4), err => {
-            if (err) throw err;
-            message.reply(`Done <@!${themuteguy.id}> Has been muted!`).then(msg => msg.delete(20000))
-            let muteembed = new Discord.RichEmbed()//اللوق
-                .setAuthor("Mute log!")
-                .setColor("#FFFFFF")
-                .setTimestamp()
-                .addField("For:", `${themuteguy} \`(${themuteguy.id})\``)
-                .addField("By:", `${message.author} \`(${message.author.id})\``)
-                .addField("Reason:", mutereason)
-                .addField("Time", `${ms(ms(time), { long: true })}`)
-            let mutechannel = bot.channels.find(c => c.name === "logs")
-            if (!mutechannel) return;
-            mutechannel.send(muteembed)
-        })
+    if(msg.content.startsWith (prefix + 'server')) {
+      if(!msg.channel.guild) return msg.reply('**❌ اسف لكن هذا الامر للسيرفرات فقط **');
+      let embed = new Discord.RichEmbed()
+      .setColor('#000000')
+      .setThumbnail(msg.guild.iconURL)
+      .setTitle(`${msg.guild.name}`,true)
+      .addField(':id: **Server ID:**',`${msg.guild.id}`,true)
+      .addField('📅** Created On**',msg.guild.createdAt.toLocaleString())
+      .addField('👑** Owned By**',`${msg.guild.owner}`,true)
+      .addField(':busts_in_silhouette:  **Members **' + `[ ${msg.guild.memberCount} ]`,`**${msg.guild.members.filter(m=>m.presence.status == 'online').size}**` + ' Online')
+      .addField(':speech_balloon: Channels ' + `[ ${msg.guild.channels.size} ]`,`**${msg.guild.channels.filter(m => m.type === 'text').size}**` + ' Text | ' + `**${msg.guild.channels.filter(m => m.type === 'voice').size}**` + ' Voice')//tt
+      .addField(':earth_africa: Others','**Region: **' + `${msg.guild.region}` + ' **Verification Level:** ' + `${msg.guild.verificationLevel}`)
+      .addField(':closed_lock_with_key:** Rules **' + `[ ${msg.guild.roles.size} ]`,'To see a list with all roles use **#roles**');
+      msg.channel.send({embed:embed});
     }
-    if (cmd == `${prefix}unmute`) {
-        if (!message.member.roles.some(r => ['الرول رقم 2 الي يمديه يستعمل الكوماند', 'الرول الي يمديه يستعمل الكوماند'].includes(r.name))) return message.reply('You do not have permissions').then(msg => msg.delete(30000))
-        let tounmute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-        if (!tounmute) return message.reply('**Mention someone to unmute!**')
-        let muterole = message.guild.roles.find(c => c.name == 'Muted')
-        if (!muterole) {
-            aaa = await message.guild.createRole({
-                name: "Muted",
-                permissions: []
-            });
-        }
-        if(!tounmute.roles.has(muterole.id)) return message.reply('Uhhh he\'s not muted!')
-        for(var i in bot.mutes) {
-            let data = bot.mutes[i];
-            if(data.muted == tounmute.id && data.guild == message.guild.id){
-            message.guild.members.get(`${tounmute.id}`).removeRole(message.guild.roles.find(c => c.name == 'Muted'), "Unmute command")
-            delete bot.mutes[i];
-            }
-        }
-        fs.writeFile("./mutes.json", JSON.stringify(bot.mutes, null, 4), err => {
-            message.channel.send('Done')
-            if (err) throw err;
-        })
-    }
-    if (cmd == `${prefix}setup`) { // الكوماند هذا لو انت سويت كاتقوري جديد وسويت فيه شانلات جديدة مو موجود فيها منع للميوت اكتب الكوماند ذا 
-        if (!message.member.roles.some(r => ['الرول رقم 2 الي يمديه يستعمل الكوماند', 'الرول الي يمديه يستعمل الكوماند'].includes(r.name))) return message.reply('You do not have permissions').then(msg => msg.delete(30000))
-        let role = message.guild.roles.find(c => c.name === "Muted")
-        if (!role) {
-            muterole = await message.guild.createRole({
-                name: "Muted",
-                permissions: []
-            });
-        }
-        message.guild.channels.forEach(async (channel) => {
-            await channel.overwritePermissions(role.id, {
-                SEND_MESSAGES: false,
-                ADD_REACTIONS: false
-            });
-        });
-        message.channel.send('Done')
-    }
-})
+  });
 
 
 client.on("message", message => { // تعريف المسج
