@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 const client = new Discord.Client();
 
-var prefix = "!";
+var prefix = "a!";
 
 client.on('ready', () => {
 
@@ -26,7 +26,7 @@ client.user.setStatus("dnd")
 
 
 client.on('message', message => {
-   if (message.content === "!id") {
+   if (message.content === "a!id") {
    let embed = new Discord.RichEmbed()
   .setColor("RANDOM")
   .setThumbnail(message.author.avatarURL)
