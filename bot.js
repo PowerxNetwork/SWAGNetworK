@@ -383,7 +383,7 @@ const args = message.content.slice(prefix.length).trim().split(/ +/g);
 
 
 client.on("message",async msg => {
-    if(msg.content.startsWith(prefix + "clear")){
+    if(msg.content.startsWith(prefix + "!clear")){
       let args = msg.content.split(" ").slice(1).join(" ");
       if(!args)  return msg.reply(`**${msg.content} <Number Messages Deleted?>**`)
       msg.reply("**Are You Sure Of The Deleted Messages?**").then(o => {
