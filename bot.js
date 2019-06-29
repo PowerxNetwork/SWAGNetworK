@@ -371,7 +371,7 @@ client.on('message', message =>{
   if(message.content.startsWith(prefix + 'stats')){
   if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **لا تملك صلاحية**');
   if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return message.reply('❌ **البوت لا يمتلك صلاحية**');
-  message.guild.createChannel(`👑معلومات السيرفر👌:` , 'category')
+  message.guild.createChannel(`Server Stats:` , 'category')
   
     message.guild.createChannel(`"انتظر قليلا` , 'voice').then(time => {
     time.overwritePermissions(message.guild.id, {
@@ -380,7 +380,7 @@ client.on('message', message =>{
     });
   
   setInterval(() => {
-      time.setName(`${message.guild.memberCount} <== عدد الكل `);
+      time.setName(`${message.guild.memberCount} <== All Member `);
  },1000);
     });
 
@@ -390,7 +390,7 @@ client.on('message', message =>{
     SPEAK: false
   });
 setInterval(() => {
-    time.setName(`${message.guild.members.filter(m =>!m.user.bot).size} <==  عدد الاعضاء `);
+    time.setName(`${message.guild.members.filter(m =>!m.user.bot).size} <==  Member `);
 },1500);
 });
 
@@ -400,14 +400,14 @@ message.guild.createChannel(`"انتظر قليلا` , 'voice').then(time => {
     SPEAK: false
   });
 setInterval(() => {
-    time.setName(`${message.guild.members.filter(m=>m.user.bot).size} <==  عدد البوتات `);
+    time.setName(`${message.guild.members.filter(m=>m.user.bot).size} <==  Bot `);
 },2000);
 });
 }
 });
 
 
-const prefix = '#';
+const prefix = '!';
 
 client.on('message', function(msg) {
 
