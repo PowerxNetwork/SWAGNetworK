@@ -18,7 +18,7 @@ client.on('ready', () => {
 
   console.log(`Logged in as ${client.user.tag}!`);
 
-client.user.setGame(`! , Akon`,"http://twitch.tv/S-F")
+client.user.setGame(`( ! ) , Akon Beta V 1.0.0`,"http://twitch.tv/S-F")
 
 client.user.setStatus("dnd")
 
