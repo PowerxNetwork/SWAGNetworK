@@ -357,9 +357,9 @@ client.on('message', function(message) {
 
 client.on('message', message =>{
   if(message.content.startsWith(prefix + 'stats')){
-  if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **لا تملك صلاحية**');
-  if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return message.reply('❌ **البوت لا يمتلك صلاحية**');
-  message.guild.createChannel(`Server Stats:` , 'category')
+  if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **You Dont Have Administarto**');
+  if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return message.reply('❌ **im Not Have Administartor**');
+  message.guild.createChannel(`Discord status :` , 'category')
  
     message.guild.createChannel(`"انتظر قليلا` , 'voice').then(time => {
     time.overwritePermissions(message.guild.id, {
@@ -368,7 +368,7 @@ client.on('message', message =>{
     });
   
   setInterval(() => {
-      time.setName(`${message.guild.memberCount} <== All Member `);
+      time.setName(`${message.guild.memberCount} : Member Count  `);
  },1000);
     });
 
@@ -378,7 +378,7 @@ client.on('message', message =>{
     SPEAK: false
   });
 setInterval(() => {
-    time.setName(`${message.guild.members.filter(m =>!m.user.bot).size} <==  Member `);
+    time.setName(`${message.guild.members.filter(m =>!m.user.bot).size} :  User Count  `);
 },1500);
 });
 
@@ -388,7 +388,7 @@ message.guild.createChannel(`"Loading ...` , 'voice').then(time => {
     SPEAK: false
   });
 setInterval(() => {
-    time.setName(`${message.guild.members.filter(m=>m.user.bot).size} <==  Bot `);
+    time.setName(`${message.guild.members.filter(m=>m.user.bot).size} :  Bot Count `);
 },2000);
 });
 }
