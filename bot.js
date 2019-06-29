@@ -267,7 +267,7 @@ client.on('message',async message => {
 
 
 client.on('message', message => {
-            if (message.content.startsWith("$botinfo")) {
+            if (message.content.startsWith("!botinfo")) {
      let embed = new Discord.RichEmbed()
 .addField(' عدد السيرفرات التي بها',`[${client.guilds.size}]  `)
 .addField(' عدد الاعضاء ',` [${client.users.size}] `)
