@@ -298,7 +298,7 @@ client.on('message', function(message) {
 
 client.on('message', function(msg) {
 
-    if(msg.content.startsWith (prefix + '!server')) {
+    if(msg.content.startsWith (prefix + 'server')) {
       if(!msg.channel.guild) return msg.reply('**❌ اسف لكن هذا الامر للسيرفرات فقط **');
       let embed = new Discord.RichEmbed()
       .setColor('#000000')
