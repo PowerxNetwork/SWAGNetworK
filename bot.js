@@ -296,25 +296,6 @@ client.on('message', function(message) {
 });
 
 
-client.on('message',async message => {
-  if(message.content.startsWith(prefix + "server")) {
-    let embed = new Discord.RichEmbed()
-    .setAuthor(message.author.username, message.author.avatarURL)
-    .setTitle(``${message.guild.name}``)
-    .setThumbnail(message.guild.iconURL)
-    .addField('• iD:', `- ${message.guild.id}`,true)
-    .addField('• Owner:', `- ${message.guild.owner}`, true)
-    .addField('• Channels:', ``#` ${message.guild.channels.filter(a => a.type === 'text').size} - `🎤` ${message.guild.channels.filter(a => a.type === 'voice').size}`, true)
-    .addField('• Members:', ``Count` ${message.guild.memberCount} - `Last` ${Array.from(message.channel.guild.members.values()).sort((a, b) => b.joinedAt - a.joinedAt).map(m => `${m}`).splice(0, 1)}`, true)
-    .addField('• AFK Channel:', `${message.guild.afkChannel || 'None'}`, true)
-    .addField('• Other:', ``Roles` ${message.guild.roles.size} - `Emojis` ${message.guild.emojis.size} `[` ${message.guild.emojis.map(m => m).join(' **|** ')} `]``,true)
-    .addField('• Region:', `${message.guild.region}`, true);
-
-    message.channel.send(embed);
-  }
-});
-
-
 client.on('message', async msg =>{
     var prefix = '!';//هنا البريفيكس
     if (msg.author.bot) return undefined;
@@ -384,6 +365,46 @@ client.on("message", message => {
    
   } //////// Galal , Alpha Codes
 }); //////// Galal , Alpha Codes
+
+
+client.on('message', message =>{
+  if(message.content.startsWith(prefix + 'stats')){
+  if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **لا تملك صلاحية**');
+  if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return message.reply('❌ **البوت لا يمتلك صلاحية**');
+  message.guild.createChannel(`👑معلومات السيرفر👌:` , 'category')
+  
+    message.guild.createChannel(`"انتظر قليلا` , 'voice').then(time => {
+    time.overwritePermissions(message.guild.id, {
+      CONNECT: false,
+      SPEAK: false
+    });
+  
+  setInterval(() => {
+      time.setName(`${message.guild.memberCount} <== عدد الكل `);
+ },1000);
+    });
+
+ message.guild.createChannel(`"انتظر قليلا` , 'voice').then(time => {
+  time.overwritePermissions(message.guild.id, {
+    CONNECT: false,
+    SPEAK: false
+  });
+setInterval(() => {
+    time.setName(`${message.guild.members.filter(m =>!m.user.bot).size} <==  عدد الاعضاء `);
+},1500);
+});
+
+message.guild.createChannel(`"انتظر قليلا` , 'voice').then(time => {
+  time.overwritePermissions(message.guild.id, {
+    CONNECT: false,
+    SPEAK: false
+  });
+setInterval(() => {
+    time.setName(`${message.guild.members.filter(m=>m.user.bot).size} <==  عدد البوتات `);
+},2000);
+});
+}
+});
 
 
 client.login(process.env.BOT_TOKEN);
