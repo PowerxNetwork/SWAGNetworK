@@ -372,7 +372,7 @@ client.on('message', message =>{
  },1000);
     });
 
- message.guild.createChannel(`"انتظر قليلا` , 'voice').then(time => {
+ message.guild.createChannel(`"Loding ...` , 'voice').then(time => {
   time.overwritePermissions(message.guild.id, {
     CONNECT: false,
     SPEAK: false
@@ -382,7 +382,7 @@ setInterval(() => {
 },1500);
 });
 
-message.guild.createChannel(`"انتظر قليلا` , 'voice').then(time => {
+message.guild.createChannel(`"Loding ...` , 'voice').then(time => {
   time.overwritePermissions(message.guild.id, {
     CONNECT: false,
     SPEAK: false
@@ -400,9 +400,9 @@ client.on('message', function(message) {
     if(message.content === '!color') {
     if(message.member.hasPermission('MANAGE_ROLES')) {
     setInterval(function(){})
-    message.channel.send('يتم انشاء 50 لون انتضر | ▶️')
+    message.channel.send('Loding ... Cretar Color | ▶️')
     }else{
-    message.channel.send('ما معاك البرمشن المطلوب |❌')
+    message.channel.send('You Not Administartor |❌')
     }
     }
     });
