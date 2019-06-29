@@ -361,7 +361,7 @@ client.on('message', message =>{
   if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return message.reply('❌ **im Not Have Administartor**');
   message.guild.createChannel(`Discord status :` , 'category')
  
-    message.guild.createChannel(`"انتظر قليلا` , 'voice').then(time => {
+    message.guild.createChannel(`"Loading` , 'voice').then(time => {
     time.overwritePermissions(message.guild.id, {
       CONNECT: false,
       SPEAK: false
