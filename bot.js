@@ -402,7 +402,7 @@ client.on('message', function(message) {
     setInterval(function(){})
     message.channel.send('يتم انشاء 50 لون انتضر | ▶️')
     }else{
-    message.channel.send('ما معاك البرمشن المطلوب |❌🚫')
+    message.channel.send('ما معاك البرمشن المطلوب |❌')
     }
     }
     });
