@@ -352,4 +352,25 @@ client.on('message', message => {
 });
 
 
+client.on('message', message => {let prefix = "!";
+if(message.content.startsWith(prefix + "sug")) {
+      message.delete()
+
+const args = message.content.slice(prefix.length).trim().split(/ +/g);
+
+  var suggestMessage = args.slice(1).join(" ")
+  if(!suggestMessage) return message.reply("الرجاء وضع اقتراح")
+  let suggestsEMBED = new Discord.RichEmbed()
+   .setColor('#0028db')
+   .setTitle(" !أقتراح جديد ")
+   .setDescription(`**${suggestMessage}**`)
+   .setFooter(` المقترح : ${message.author.tag}`)
+  
+       let suggests = message.guild.channels.find(ch => ch.name === "الاقتراحات");
+                   if (!suggests) return message.reply("يرجى صنع روم بأسم : الاقتراحات")
+               suggests.send(suggestsEMBED);
+}
+})
+
+
 client.login(process.env.BOT_TOKEN);
