@@ -340,7 +340,7 @@ client.on("ready", () => { // هنا لو بدأ البوت
 
 
 client.on('message', message => {
-    if (message.content === ('ping')) {
+    if (message.content === ('!ping')) {
       if (message.author.bot) return;
       if (!message.channel.guild) return;
     message.channel.send({
