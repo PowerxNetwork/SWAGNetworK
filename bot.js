@@ -355,18 +355,6 @@ client.on('message', function(message) {
 });
 
 
-client.on("message", message => {
-  if (message.channel.type === "dm") { //////// Galal , Alpha Codes
-
-      message.channel.startTyping(); //////// Galal , Alpha Codes
-      setTimeout(() => { //////// Galal , Alpha Codes
-        message.channel.stopTyping(); //////// Galal , Alpha Codes
-      }, Math.random() * (1 - 3) + 1 * 1000);
-   
-  } //////// Galal , Alpha Codes
-}); //////// Galal , Alpha Codes
-
-
 client.on('message', message =>{
   if(message.content.startsWith(prefix + 'stats')){
   if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **لا تملك صلاحية**');
