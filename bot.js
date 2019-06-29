@@ -543,18 +543,4 @@ client.on('message', function(msg) {
       });
 
 
-client.on("message", async message => {
-    if(message.content.startsWith(prefix + "banlist")) {
-        if(!message.guild) return;
-                if(!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send('**Sorry But You Dont Have Permission** `BAN_MEMBERS`' );
-        message.guild.fetchBans()
-        .then(bans => {
-            let b = bans.size;
-            let bb = bans.map(a => `${a}`).join(" - ");
-            message.channel.send(`**`${b}` | ${bb}**`);
-        });
-    }
-});
-
-
 client.login(process.env.BOT_TOKEN);
