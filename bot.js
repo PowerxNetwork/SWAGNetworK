@@ -759,4 +759,18 @@ var x2 = ['5587' ,' 9978' , '3785' , '7734' , '9864' , '7681' , '3758' , '7834' 
                                    });
 
 
+client.on('message', message => {
+    if (message.content.startsWith(prefix + 'accept')) {
+        if (message.author.bot) return;
+        if (!message.guild) return;
+        let Room = message.guild.channels.find(`name`, 'activation');
+        if (!Room) return message.reply(`You Must Create Room With Name **activation**`);
+        let user = message.mentions.users.first();
+        let by = message.author
+        Room.send(`${user}` + "** You are acceptable in management By **" + `${by}`);
+    }
+});
+ 
+
+
 client.login(process.env.BOT_TOKEN);
