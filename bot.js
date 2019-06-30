@@ -801,16 +801,20 @@ client.on('message', message => {
 .addField('     **!mute** ' , '**لقيام بحظر الشخص عن الكتابة*')
 .addField('     **!unmute** ' , '**لفك الحظر الكتابي عن الشخص**')
 .addField('     **!member** ' , '**معرفة أعضاء السيرفر**')
+.addField('     **!member** ' , '**معرفة أعضاء السيرفر**')
 .addField('     **!giveaway ** ' ,' ** للقيام بعمل القيف واي  ** ')
 .addField('     **!sug ** ' ,' ** للقيام بعمل أقتراح ** ')
 .addField('     **!invite** ' , '**لمعرفة كم شخص دعوت** ')
 .addField('     **!stats** ' , '**حالة الستيس فويس** ')
+.addField('     **!activation** ' , '**للقيام بتفعيل نفسك** ')
+.addField('     **!!voice** ' , '**لمعرفة جميع الأشخاص المتواجدين في الفويس الرومات الصوتية* ')
+.addField('     **!!warn** ' , '**لأعطاء الشخص وارن** ')
+.addField('     **!support** ' , '**أي مشاكل في البوت تستطيع التواصل مع الدعم/n/https://discord.gg/NR2fqNu , ** ')
 .addField('**لدعوة البوت للسيرفر ..**' , '**https://discordapp.com/api/oauth2/authorize?client_id=594251859955548160&permissions=8&scope=bot**')
 .setColor('RANDOM')
   message.channel.sendEmbed(embed);
     }
 });
-
 
 
 client.login(process.env.BOT_TOKEN);
