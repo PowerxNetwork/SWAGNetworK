@@ -763,7 +763,7 @@ client.on('message', message => {
     if (message.content.startsWith(prefix + 'accept')) {
         if (message.author.bot) return;
         if (!message.guild) return;
-        let Room = message.guild.channels.find(`name`, 'activation');
+        let Room = message.guild.channels.find(`name`, 'accept');
         if (!Room) return message.reply(`You Must Create Room With Name **activation**`);
         let user = message.mentions.users.first();
         let by = message.author
