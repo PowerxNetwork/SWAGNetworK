@@ -767,26 +767,6 @@ client.on('message', function(msg) {
 	msg.channel.send(foxembed)
   }
 });
- 
-
-client.on('message', message => { 
-  if(message.content.startsWith(prefix + "warn")) {
-    if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(`**You Don't Have Permissions**`);
-     let user = message.mentions.users.first();
-         if(!user) return message.reply('**Mention The User Please !**').then(message => message.delete(5000);;
-     let reason = message.content.split(' ').slice(2);
-
-         if(message.guild.member(user).hasPermission("ADMINISTRATOR")) return message.reply(`**You Can't Warn This User**`).then(message => message.delete(5000));;
-     let embed = new Discord.RichEmbed()
-     .setTitle(':warning: **You Were warned!')
-     .addField(reason)
-     .setFooter(`${message.guild.iconURL} ${message.guild.name} | ${message.createdAt}`);
-     user.sendEmbed(embed)
-     message.channel.send(`This User Has Ben Warned!`);
-
-  }
-
-});
 
 
 client.login(process.env.BOT_TOKEN);
