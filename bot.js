@@ -759,16 +759,13 @@ var x2 = ['5587' ,' 9978' , '3785' , '7734' , '9864' , '7681' , '3758' , '7834' 
                                    });
 
 
-client.on('message', message => {
-    if (message.content.startsWith(prefix + 'accept')) {
-        if (message.author.bot) return;
-        if (!message.guild) return;
-        let Room = message.guild.channels.find(`name`, 'accept');
-        if (!Room) return message.reply(`You Must Create Room With Name **activation**`);
-        let user = message.mentions.users.first();
-        let by = message.author
-        Room.send(`${user}` + "** You are acceptable in management By **" + `${by}`);
-    }
+client.on('message', function(msg) {
+  if(msg.content.startsWith ('!voic')) {
+     	        let foxembed = new Discord.RichEmbed()
+				      .setColor('RANDOM') /// By KillerFox
+    .setDescription(`Voice Online : [ ${msg.guild.members.filter(m => m.voiceChannel).size} ]`)
+	msg.channel.send(foxembed)
+  }
 });
  
 
