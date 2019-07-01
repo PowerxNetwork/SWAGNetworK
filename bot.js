@@ -47,14 +47,14 @@ client.on('message', message => {
       var IzRo = new Discord.RichEmbed()
       .setThumbnail(message.author.avatarURL)
       .setFooter(message.author.username, message.author.avatarURL) 
-      .setTitle('🌷| Members info')
+      .setTitle('Members info')
       .addBlankField(true)
-      .addField('📗| Online',
+      .addField('Online',
       `${message.guild.members.filter(m=>m.presence.status == 'online').size}`)
-      .addField('📕| DND',`${message.guild.members.filter(m=>m.presence.status == 'dnd').size}`)
-      .addField('📙| Idle',`${message.guild.members.filter(m=>m.presence.status == 'idle').size}`)
-      .addField('📓| Offline',`${message.guild.members.filter(m=>m.presence.status == 'offline').size}`)
-      .addField('➡| Server Members',`${message.guild.memberCount}`)
+      .addField('DND',`${message.guild.members.filter(m=>m.presence.status == 'dnd').size}`)
+      .addField('Idle',`${message.guild.members.filter(m=>m.presence.status == 'idle').size}`)
+      .addField('Offline',`${message.guild.members.filter(m=>m.presence.status == 'offline').size}`)
+      .addField('[❖] Server Members [❖]',`${message.guild.memberCount}`)
       message.channel.send(IzRo);
 	
     });
@@ -269,10 +269,10 @@ client.on('message',async message => {
 client.on('message', message => {
             if (message.content.startsWith("&botinfo")) {
      let embed = new Discord.RichEmbed()
-.addField(' عدد السيرفرات التي بها',`[${client.guilds.size}]  `)
-.addField(' عدد الاعضاء ',` [${client.users.size}] `)
-.addField('الغرف ',`[${client.channels.size}]`) 
-.addField(' البنق ',`[${Date.now() - message.createdTimestamp}]`) 
+.addField('** [❖] Server Bots [❖]**',`[${client.guilds.size}]  `)
+.addField('** [❖] Member [❖]**',` [${client.users.size}] `)
+.addField('**[❖] Channel [❖]**',`[${client.channels.size}]`) 
+.addField('**[❖] Ping [❖]**',`[${Date.now() - message.createdTimestamp}]`) 
 .addField(' Devolope - Tornado#6642, ')
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
@@ -507,15 +507,15 @@ client.on('message', function(msg) {
           .setColor('RANDOM')
           .setThumbnail(msg.guild.iconURL)
           .setTitle(`${msg.guild.name}`)
-          .addField('**[❖] Server Name | اسم السيرفر**',`[** __${msg.guild.name}__ **]`,true)
-          .addField('**[❖] OwnerShip | مؤسس السيرفر**',`**${msg.guild.owner}**`,true)
-          .addField('**[❖] Server ID | معرف السيرفر**',`**${msg.guild.id}**`,true)
-          .addField('**[❖] Members Count | عدد الاعضاء**',`[** __${msg.guild.memberCount}__ **]`,true)
-          .addField('**[❖] Verification Level | مستوي الحمايه**',`[** __${verifLevels[msg.guild.verificationLevel]}__** ]`,true)
-          .addField('**[❖] Region | البلد**',`[** __${region[msg.guild.region]}__** ]`,true)
-          .addField('**[❖] Text Channels | رومات كتابيه**',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
-          .addField('**[❖] Voice Channels | رومات صوتيه**',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
-          .addField('**[❖] Created At | صنع في**',msg.guild.createdAt.toLocaleString())
+          .addField('**[❖] Server Name [❖] **',`[** __${msg.guild.name}__ **]`,true)
+          .addField('**[❖] OwnerShip [❖]**',`**${msg.guild.owner}**`,true)
+          .addField('**[❖] Server ID [❖]**',`**${msg.guild.id}**`,true)
+          .addField('**[❖] Members Count [❖]**',`[** __${msg.guild.memberCount}__ **]`,true)
+          .addField('**[❖] Verification Level [❖]**',`[** __${verifLevels[msg.guild.verificationLevel]}__** ]`,true)
+          .addField('**[❖] Region [❖]**',`[** __${region[msg.guild.region]}__** ]`,true)
+          .addField('**[❖] Text Channels [❖]**',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
+          .addField('**[❖] Voice Channels [❖]**',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
+          .addField('**[❖] Created At [❖]**',msg.guild.createdAt.toLocaleString())
           msg.channel.send({embed:embed});
         }
       });
