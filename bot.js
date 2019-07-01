@@ -809,7 +809,7 @@ client.on('message', message => {
 .addField('     **&activation** ' , '**للقيام بتفعيل نفسك** ')
 .addField('     **&voice** ' , '**لمعرفة جميع الأشخاص المتواجدين في الفويس الرومات الصوتية* ')
 .addField('     **&warn** ' , '**لأعطاء الشخص وارن** ')
-.addField('     **&support** ' , '**أي مشاكل في البوت تستطيع التواصل مع الدعم|| https://discord.gg/Q5D5ZrU || , ** ')
+.addField('     **&support** ' , '**أي مشاكل في البوت تستطيع التواصل مع الدعم-- || https://discord.gg/Q5D5ZrU || , ** ')
 .addField('**لدعوة البوت للسيرفر ..**' , '**https://discordapp.com/api/oauth2/authorize?client_id=594251859955548160&permissions=8&scope=bot**')
 .setColor('RANDOM')
   message.channel.sendEmbed(embed);
