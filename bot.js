@@ -26,7 +26,7 @@ client.user.setStatus("dnd")
 
 
 client.on('message', message => {
-   if (message.content === "!id") {
+   if (message.content === "&id") {
    let embed = new Discord.RichEmbed()
   .setColor("RANDOM")
   .setThumbnail(message.author.avatarURL)
@@ -790,7 +790,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-     if (message.content === "&&&help") {
+     if (message.content === "&help") {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
 .addField('     **&ping** ' ,' ** إتصال البوت** ')
