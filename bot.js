@@ -18,7 +18,7 @@ client.on('ready', () => {
 
   console.log(`Logged in as ${client.user.tag}!`);
 
-client.user.setGame(`( & ) , SSA ...`,"http://twitch.tv/S-F")
+client.user.setGame(`&help ,`,"http://twitch.tv/S-F")
 
 client.user.setStatus("dnd")
 
