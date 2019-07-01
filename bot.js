@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 const client = new Discord.Client();
 
-var prefix = "!";
+var prefix = "&";
 
 client.on('ready', () => {
 
@@ -18,7 +18,7 @@ client.on('ready', () => {
 
   console.log(`Logged in as ${client.user.tag}!`);
 
-client.user.setGame(`( ! ) , Akon V 2.0.1`,"http://twitch.tv/S-F")
+client.user.setGame(`( & ) , Akon V 2.0.1`,"http://twitch.tv/S-F")
 
 client.user.setStatus("dnd")
 
@@ -43,7 +43,7 @@ client.on('message', message => {
 
 client.on('message', message => {
               if (!message.channel.guild) return;
-      if(message.content =='!member')
+      if(message.content =='&member')
       var IzRo = new Discord.RichEmbed()
       .setThumbnail(message.author.avatarURL)
       .setFooter(message.author.username, message.author.avatarURL) 
@@ -61,7 +61,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-    if (message.content.startsWith("!avatar")) {
+    if (message.content.startsWith("&avatar")) {
         var mentionned = message.mentions.users.first();
     var x5bzm;
       if(mentionned){
@@ -119,7 +119,7 @@ client.on('message', message => {
                                 ticket.sendEmbed(embed);
                 }) .catch();
     }
-    if(message.content.startsWith(prefix + '!close')) {
+    if(message.content.startsWith(prefix + '&close')) {
             if(!message.member.hasPermission("ADMINISTRATOR")) return;
         if(!message.channel.name.startsWith("ticket")) {
             return;
@@ -130,7 +130,7 @@ client.on('message', message => {
                     message.channel.sendEmbed(embed) .then(codes => {
  
                    
-                        const filter = msg => msg.content.startsWith(prefix + '!close');
+                        const filter = msg => msg.content.startsWith(prefix + '&close');
                         message.channel.awaitMessages(response => response.content === prefix + 'close', {
                             max: 1,
                             time: 20000,
@@ -267,7 +267,7 @@ client.on('message',async message => {
 
 
 client.on('message', message => {
-            if (message.content.startsWith("botinfo")) {
+            if (message.content.startsWith("&botinfo")) {
      let embed = new Discord.RichEmbed()
 .addField(' عدد السيرفرات التي بها',`[${client.guilds.size}]  `)
 .addField(' عدد الاعضاء ',` [${client.users.size}] `)
@@ -297,7 +297,7 @@ client.on('message', function(message) {
 
 
 client.on('message', async msg =>{
-    var prefix = '!';//هنا البريفيكس
+    var prefix = '&';//هنا البريفيكس
     if (msg.author.bot) return undefined;
     if (!msg.content.startsWith(prefix)) return undefined;
    
@@ -397,7 +397,7 @@ setInterval(() => {
 
 client.on('message', function(message) {
     if(!message.channel.guild) return;
-    if(message.content === '!color') {
+    if(message.content === '&color') {
     if(message.member.hasPermission('MANAGE_ROLES')) {
     setInterval(function(){})
     message.channel.send('Loading ... Cretar Color | ▶️')
@@ -424,7 +424,7 @@ client.on('message', function(message) {
 
 
 client.on('message', message => {
-    if (message.content === "!croles") {
+    if (message.content === "&croles") {
     if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
             if (!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(`**${message.author.username} You Dont Have** ``MANAGE_ROLES`` **Premission**`);
 
@@ -446,7 +446,7 @@ message.channel.sendMessage('**Wait a bit until the row is finished! **')
 
 
 client.on("message", message => {
-                      if(message.content === '!رابط' ) {
+                      if(message.content === '&رابط' ) {
 						  message.channel.send('**تم الأرسال في الخاص .**').then(msg => {
 							  msg.edit('تم أرسال الرابط بالخاص عزيزي.')
 						  
@@ -464,7 +464,7 @@ client.on("message", message => {
 
 
 client.on("message", message => {
-                      if(message.content === '!link' ) {
+                      if(message.content === '&link' ) {
 						  message.channel.send('**Look To private**').then(msg => {
 							  msg.edit('Go to Private Now . ')
 						  
@@ -522,7 +522,7 @@ client.on('message', function(msg) {
 
 
 client.on("message",async message => {
-if(message.content === '!تصويت'){//الامر
+if(message.content === '&تصويت'){//الامر
 if(!message.member.roles.some(r=>["manager","vote"].includes(r.name)) ) return; // الرتب الي يمديها تستخدم الامر يمديك تخليها ب برمشن
  
     let go1; //انشاء متغير go1
@@ -576,7 +576,7 @@ let go2; // انشاء متغير go2
 
 
 client.on("message",async message => {
-if(message.content === '!vote'){//الامر
+if(message.content === '&vote'){//الامر
 if(!message.member.roles.some(r=>["manager","vote"].includes(r.name)) ) return; // الرتب الي يمديها تستخدم الامر يمديك تخليها ب برمشن
  
     let go1; //انشاء متغير go1
@@ -667,7 +667,7 @@ client.on("message", message => {
   
   let command = message.content.split(" ")[0];
   
-  if (command === "!mute") {
+  if (command === "&mute") {
         if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** You Don't Have Manage Roles 'Manage Roles' **").catch(console.error);
   let user = message.mentions.users.first();
   let modlog = client.channels.find('name', 'mute-log');
@@ -702,7 +702,7 @@ client.on("message", message => {
   
   let command = message.content.split(" ")[0];
   
-  if (command === "!unmute") {
+  if (command === "&unmute") {
         if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** You Don't Have Manage Roles 'Manage Roles' **").catch(console.error);
   let user = message.mentions.users.first();
   let modlog = client.channels.find('name', 'mute-log');
@@ -760,7 +760,7 @@ var x2 = ['5587' ,' 9978' , '3785' , '7734' , '9864' , '7681' , '3758' , '7834' 
 
 
 client.on('message', function(msg) {
-  if(msg.content.startsWith ('!voic')) {
+  if(msg.content.startsWith ('&voic')) {
      	        let foxembed = new Discord.RichEmbed()
 				      .setColor('RANDOM') /// By KillerFox
     .setDescription(`Voice Online : [ ${msg.guild.members.filter(m => m.voiceChannel).size} ]`)
@@ -790,26 +790,26 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-     if (message.content === "!help") {
+     if (message.content === "&&&help") {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
-.addField('     **!ping** ' ,' ** إتصال البوت** ')
-.addField('     **!id**  ' ,' **معلومــات عــن حســابــك** ')
-.addField('     **!new** ' , '**عمل تذكرة**')
-.addField('     **!server** ' ,' ** معلومات عن السيرفر**')
-.addField('     **!avatar** ' , '**صورتك في الدسكورد أو صورة الشخص المذكور**')
-.addField('     **!mute** ' , '**لقيام بحظر الشخص عن الكتابة*')
-.addField('     **!unmute** ' , '**لفك الحظر الكتابي عن الشخص**')
-.addField('     **!member** ' , '**معرفة أعضاء السيرفر**')
-.addField('     **!member** ' , '**معرفة أعضاء السيرفر**')
-.addField('     **!giveaway ** ' ,' ** للقيام بعمل القيف واي  ** ')
-.addField('     **!sug ** ' ,' ** للقيام بعمل أقتراح ** ')
-.addField('     **!invite** ' , '**لمعرفة كم شخص دعوت** ')
-.addField('     **!stats** ' , '**حالة الستيس فويس** ')
-.addField('     **!activation** ' , '**للقيام بتفعيل نفسك** ')
-.addField('     **!voice** ' , '**لمعرفة جميع الأشخاص المتواجدين في الفويس الرومات الصوتية* ')
-.addField('     **!warn** ' , '**لأعطاء الشخص وارن** ')
-.addField('     **!support** ' , '**أي مشاكل في البوت تستطيع التواصل مع الدعم|| https://discord.gg/Q5D5ZrU || , ** ')
+.addField('     **&ping** ' ,' ** إتصال البوت** ')
+.addField('     **&id**  ' ,' **معلومــات عــن حســابــك** ')
+.addField('     **&new** ' , '**عمل تذكرة**')
+.addField('     **&server** ' ,' ** معلومات عن السيرفر**')
+.addField('     **&avatar** ' , '**صورتك في الدسكورد أو صورة الشخص المذكور**')
+.addField('     **&mute** ' , '**لقيام بحظر الشخص عن الكتابة*')
+.addField('     **&unmute** ' , '**لفك الحظر الكتابي عن الشخص**')
+.addField('     **&member** ' , '**معرفة أعضاء السيرفر**')
+.addField('     **&member** ' , '**معرفة أعضاء السيرفر**')
+.addField('     **&giveaway ** ' ,' ** للقيام بعمل القيف واي  ** ')
+.addField('     **&sug ** ' ,' ** للقيام بعمل أقتراح ** ')
+.addField('     **&invite** ' , '**لمعرفة كم شخص دعوت** ')
+.addField('     **&stats** ' , '**حالة الستيس فويس** ')
+.addField('     **&activation** ' , '**للقيام بتفعيل نفسك** ')
+.addField('     **&voice** ' , '**لمعرفة جميع الأشخاص المتواجدين في الفويس الرومات الصوتية* ')
+.addField('     **&warn** ' , '**لأعطاء الشخص وارن** ')
+.addField('     **&support** ' , '**أي مشاكل في البوت تستطيع التواصل مع الدعم|| https://discord.gg/Q5D5ZrU || , ** ')
 .addField('**لدعوة البوت للسيرفر ..**' , '**https://discordapp.com/api/oauth2/authorize?client_id=594251859955548160&permissions=8&scope=bot**')
 .setColor('RANDOM')
   message.channel.sendEmbed(embed);
