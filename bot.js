@@ -790,7 +790,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-     if (message.content === "help") {
+     if (message.content === "&help") {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
 .addField('     **&ping** ' ,' ** إتصال البوت** ')
