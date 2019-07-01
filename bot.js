@@ -808,7 +808,7 @@ client.on('message', message => {
 .addField('     **!stats** ' , '**حالة الستيس فويس** ')
 .addField('     **!activation** ' , '**للقيام بتفعيل نفسك** ')
 .addField('     **!voice** ' , '**لمعرفة جميع الأشخاص المتواجدين في الفويس الرومات الصوتية* ')
-.addField('     **!!warn** ' , '**لأعطاء الشخص وارن** ')
+.addField('     **!warn** ' , '**لأعطاء الشخص وارن** ')
 .addField('     **!support** ' , '**أي مشاكل في البوت تستطيع التواصل مع الدعم- https://discord.gg/NR2fqNu , ** ')
 .addField('**لدعوة البوت للسيرفر ..**' , '**https://discordapp.com/api/oauth2/authorize?client_id=594251859955548160&permissions=8&scope=bot**')
 .setColor('RANDOM')
