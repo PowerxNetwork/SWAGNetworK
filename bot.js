@@ -18,7 +18,7 @@ client.on('ready', () => {
 
   console.log(`Logged in as ${client.user.tag}!`);
 
-client.user.setGame(`( & ) , Akon V 2.5.8`,"http://twitch.tv/S-F")
+client.user.setGame(`( & ) , Akon V 2.5.9`,"http://twitch.tv/S-F")
 
 client.user.setStatus("dnd")
 
@@ -823,7 +823,7 @@ client.on('message',async message => { ///By KillerFox
     var duration;
     var gMembers;
     var filter = m => m.author.id === message.author.id;
-    if(message.content.startsWith("$ac")) { ///By KillerFox
+    if(message.content.startsWith("&ac")) { ///By KillerFox
         //return message.channel.send(':heavy_multiplication_x:| **هذا الامر معطل حاليا.. ``حاول في وقت لاحق``**'); ///By KillerFox
         if(!message.guild.member(message.author).hasPermission('MANAGE_GUILD')) return message.channel.send(':heavy_multiplication_x:| **يجب أن يكون لديك خاصية التعديل على السيرفر**');
         message.channel.send(`:eight_pointed_black_star:| **منشن الروم الذي تريد به ارسال الرساله**`).then(msgg => { ///By KillerFox
