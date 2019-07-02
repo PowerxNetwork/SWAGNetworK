@@ -18,7 +18,7 @@ client.on('ready', () => {
 
   console.log(`Logged in as ${client.user.tag}!`);
 
-client.user.setGame(`&help ,`,"http://twitch.tv/S-F")
+client.user.setGame(`SAA Shop | &help ,`,"http://twitch.tv/S-F")
 
 client.user.setStatus("dnd")
 
@@ -281,7 +281,7 @@ client.on('message', message => {
 
 
 client.on('message', function(message) {
-    if(message.content.startsWith(prefix + 'akon')) {
+    if(message.content.startsWith(prefix + 'ssa')) {
         let args = message.content.split(" ").slice(1);
         if (!args[0]) {
             message.channel.send('https://discordapp.com/api/oauth2/authorize?client_id=594251859955548160&permissions=8&scope=bot');
