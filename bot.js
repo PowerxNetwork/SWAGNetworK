@@ -318,7 +318,7 @@ client.on('message', async msg =>{
 });//Alpha Codes_LioNDz
 
 
-client.on('message', message => {let prefix = "!";
+client.on('message', message => {let prefix = "&";
 if(message.content.startsWith(prefix + "sug")) {
       message.delete()
 
